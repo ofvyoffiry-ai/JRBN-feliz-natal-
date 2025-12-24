@@ -7,32 +7,40 @@
 body{
   margin:0;
   height:100vh;
-  background: linear-gradient(135deg,#8b0000,#b22222,#ffd700);
+  background: linear-gradient(135deg,#7a0000,#b22222,#ffd700);
   display:flex;
   justify-content:center;
   align-items:center;
   font-family: 'Segoe UI', Arial, sans-serif;
+  overflow:hidden;
 }
+
+/* Card */
 .card{
+  position:relative;
   background: rgba(0,0,0,0.65);
   padding:45px;
   border-radius:30px;
   color:white;
   text-align:center;
   max-width:460px;
-  box-shadow:0 0 50px rgba(0,0,0,0.8);
+  box-shadow:0 0 60px rgba(0,0,0,0.9);
+  z-index:2;
 }
+
+/* Títulos */
 h1{
   font-size:3em;
   color:#ffd700;
-  margin-bottom:10px;
+  text-shadow:0 0 15px #ffd700;
 }
 .brand{
-  font-size:2em;
+  font-size:2.2em;
   font-weight:900;
-  letter-spacing:3px;
+  letter-spacing:4px;
   color:#00ffd5;
-  margin-bottom:25px;
+  text-shadow:0 0 15px #00ffd5;
+  margin:15px 0 25px;
 }
 p{
   font-size:1.25em;
@@ -44,9 +52,107 @@ p{
   font-weight:bold;
   color:#ffd700;
 }
+
+/* Botão WhatsApp */
+.whatsapp{
+  display:inline-block;
+  margin-top:25px;
+  padding:15px 25px;
+  background:#25D366;
+  color:white;
+  font-size:1.1em;
+  font-weight:bold;
+  border-radius:40px;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(37,211,102,0.7);
+  transition:transform 0.2s;
+}
+.whatsapp:hover{
+  transform:scale(1.05);
+}
+
+/* Neve */
+.snow{
+  position:absolute;
+  top:-10px;
+  color:white;
+  font-size:1em;
+  user-select:none;
+  animation:fall linear infinite;
+  opacity:0.8;
+}
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+  }
+}
+
+/* Presentes animados */
+.gift{
+  position:absolute;
+  font-size:24px;
+  animation:giftFall linear infinite;
+}
+@keyframes giftFall{
+  to{
+    transform:translateY(110vh);
+  }
+}
+
+/* Estrelas piscando */
+.star{
+  position:absolute;
+  color: #fffacd;
+  font-size: 12px;
+  animation:blink 1.5s infinite;
+}
+@keyframes blink{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
 </style>
 </head>
 <body>
+
+<!-- Música natalícia -->
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Neve -->
+<script>
+for(let i=0;i<40;i++){
+  let snow=document.createElement("div");
+  snow.className="snow";
+  snow.innerHTML="❄";
+  snow.style.left=Math.random()*100+"vw";
+  snow.style.animationDuration=(3+Math.random()*5)+"s";
+  snow.style.fontSize=(10+Math.random()*20)+"px";
+  document.body.appendChild(snow);
+}
+
+/* Presentes 🎁 */
+for(let i=0;i<10;i++){
+  let gift=document.createElement("div");
+  gift.className="gift";
+  gift.innerHTML="🎁";
+  gift.style.left=Math.random()*100+"vw";
+  gift.style.animationDuration=(5+Math.random()*5)+"s";
+  gift.style.fontSize=(15+Math.random()*20)+"px";
+  document.body.appendChild(gift);
+}
+
+/* Estrelas ✨ */
+for(let i=0;i<20;i++){
+  let star=document.createElement("div");
+  star.className="star";
+  star.innerHTML="✨";
+  star.style.left=Math.random()*100+"vw";
+  star.style.top=Math.random()*50+"vh";
+  star.style.animationDuration=(1+Math.random()*2)+"s";
+  document.body.appendChild(star);
+}
+</script>
 
 <div class="card">
   <h1>🎄 FELIZ NATAL 🎄</h1>
@@ -63,6 +169,12 @@ p{
     Obrigado pela confiança.<br>
     Que venham mais conquistas! ✨
   </p>
+
+  <a class="whatsapp"
+     href="https://wa.me/258858586223"
+     target="_blank">
+     🟢 Falar no WhatsApp
+  </a>
 
   <div class="footer">— JRBN</div>
 </div>
